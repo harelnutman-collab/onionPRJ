@@ -12,64 +12,53 @@ def remove_layer5(msg):
     :rtype str
     """
 
-    clean_text = str(msg).replace("last", "")
-    return clean_text
+    return msg[:-40]
 
 
 def remove_layer4(msg):
     """
-    the func remove "last" 10 times
+    the func remove "HaHa" 10 times
     :param msg: message
     :type: str
     :return: new message
     :rtype str
     """
-    if type(msg) != str:
-        msg = str(msg)
-    clean_text = msg.replace("HaHa", "")
-    return clean_text
+
+
+    return msg[:-40]
 
 
 def remove_layer3(msg):
     """
-    the func remove "last" 10 times
+    the func remove "1111111" 10 times
     :param msg: message
     :type: str
     :return: new message
     :rtype str
     """
-    if type(msg) != str:
-        msg = str(msg)
-    clean_text = msg.replace("1111111", "")
-    return clean_text
+    return msg[:-70]
 
 
 def remove_layer2(msg):
     """
-    the func remove "last" 10 times
+    the func remove "-----" 10 times
     :param msg: message
     :type: str
     :return: new message
     :rtype str
     """
-    if type(msg) != str:
-        msg = str(msg)
-    clean_text = msg.replace("-----", "")
-    return clean_text
+    return msg[:-50]
 
 
 def remove_layer1(msg):
     """
-    the func remove "last" 10 times
+    the func remove "layer1" 10 times
     :param msg: message
     :type: str
     :return: new message
     :rtype str
     """
-    if type(msg) != str:
-        msg = str(msg)
-    clean_text = msg.replace("layer1", "")
-    return clean_text
+    return msg[:-60]
 
 
 server_sock = socket.socket()
@@ -87,9 +76,6 @@ while True:
             msg_data = str(client_sock.recv(msg_len).decode())
         except Exception as e:
             print(f"error in recv/send - {str(e)}")
-            break
-
-        if msg_data.lower() == "exit":
             break
 
         msg_data = remove_layer5(msg_data)

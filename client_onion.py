@@ -2,6 +2,16 @@
 import socket
 
 def send_data(client, data_len_byte, data):
+    """
+    the func send the length and data
+    :param client: from where
+    :type: socket
+    :param data_len_byte:
+    :type: int
+    :param data: the msg to send
+    :type: str
+    :return: none
+    """
     if type(data) == str:
         data = data.encode()
     try:
@@ -19,8 +29,6 @@ def layer1(msg):
     :return: the new message
     :rtype": str
     """
-    if type(msg) != str:
-        msg = str(msg)
 
     msg += "layer1"*10
     return msg
@@ -34,8 +42,7 @@ def layer2(msg):
     :return: the new message
     :rtype": str
     """
-    if type(msg) != str:
-        msg = str(msg)
+
     msg += "-----" * 10
     return msg
 
@@ -47,8 +54,7 @@ def layer3(msg):
     :return: the new message
     :rtype": str
     """
-    if type(msg) != str:
-        msg = str(msg)
+
     msg += "1111111" * 10
     return msg
 
@@ -61,8 +67,7 @@ def layer4(msg):
     :return: the new message
     :rtype": str
     """
-    if type(msg) != str:
-        msg = str(msg)
+
     msg += "HaHa" * 10
     return msg
 
@@ -75,8 +80,7 @@ def layer5(msg):
     :return: the new message
     :rtype": str
     """
-    if type(msg) != str:
-        msg = str(msg)
+
     msg += "last" * 10
     return msg
 
@@ -97,10 +101,6 @@ while True:
 
 
     if msg_to_send.lower() == 'exit':
-        try:
-            send_data(my_sock, 2, msg_to_send)
-            break
-        except Exception as e:
             break
     else:
         msg_to_send = layer1(msg_to_send)
